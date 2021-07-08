@@ -1,14 +1,13 @@
 const {StyleSheet} = require('react-native');
 
 export const styles = StyleSheet.create({
-  container: {
+  menu: {
+    backgroundColor: '#fff',
+    width: '100%',
+    height: 70,
     flexDirection: 'row',
-    backgroundColor: '#00BFFF',
-    width: '80%',
-    height: 30,
-    borderRadius: 5,
-    alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 5,
+    alignItems: 'center',
+    paddingHorizontal: 50,
   },
 });

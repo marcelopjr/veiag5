@@ -8,9 +8,11 @@ import {ProductCard} from '../../components/ProductCard';
 
 import ProductService from '../../services/ProductService';
 
-import FeatherIcons from 'react-native-vector-icons/Feather';
+import {Header} from '../../components/Header';
 
-export const Home = () => {
+import {Footer} from '../../components/Footer';
+
+export const Home = ({navigation}) => {
   const [products, setProducts] = useState([]);
   const productService = new ProductService();
 
@@ -24,12 +26,7 @@ export const Home = () => {
     <>
       <LinearGradient style={{flex: 1}} colors={['#00BFFF', '#87CEFA']}>
         <View style={styles.container}>
-          <View style={styles.header}>
-            <Text style={styles.headerTitle}>V.E.I.A</Text>
-            <TouchableOpacity>
-              <FeatherIcons name="settings" size={25} color={'#000'} />
-            </TouchableOpacity>
-          </View>
+          <Header navigation={navigation} />
 
           <View style={styles.body}>
             <FlatList
@@ -39,11 +36,10 @@ export const Home = () => {
               showsVerticalScrollIndicator={false}
               numColumns={numColumns}
               columnWrapperStyle={{justifyContent: 'space-between'}}
-              style={{height: '100%'}}
             />
           </View>
 
-          <View style={styles.menu}></View>
+          <Footer />
         </View>
       </LinearGradient>
     </>

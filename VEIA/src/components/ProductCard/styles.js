@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
   },
   foto: {
     borderRadius: 5,
-    backgroundColor: '#ff0',
     height: 120,
     width: 120,
     marginBottom: 5,

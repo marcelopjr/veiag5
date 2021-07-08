@@ -1,12 +1,16 @@
 const {StyleSheet} = require('react-native');
 
 export const styles = StyleSheet.create({
-  container: {marginTop: 50},
-  body: {
+  header: {
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    height: 60,
+    backgroundColor: '#fff',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: 601,
+    alignItems: 'center',
+  },
+  headerTitle: {
+    fontSize: 25,
+    fontWeight: 'bold',
   },
 });

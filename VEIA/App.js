@@ -4,7 +4,7 @@ import {StatusBar} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 
-import {Home} from './src/screens/Home';
+import {Routes} from './src/routes';
 
 // import { Container } from './styles';
 
@@ -16,7 +16,7 @@ const VEIA = () => {
         translucent
         barStyle="light-content"
       />
-      <Home />
+      <Routes />
     </NavigationContainer>
   );
 };
