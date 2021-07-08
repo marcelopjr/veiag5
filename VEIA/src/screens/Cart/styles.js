@@ -6,7 +6,11 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     height: 601,
+  },
+  cartAlert: {
+    fontSize: 25,
+    fontWeight: 'bold',
   },
 });

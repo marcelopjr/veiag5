@@ -24,14 +24,15 @@ export const ProductSetting = ({navigation}) => {
     <>
       <LinearGradient style={{flex: 1}} colors={['#00BFFF', '#87CEFA']}>
         <View style={styles.container}>
-          <Header navigation={navigation}/>
+          <Header navigation={navigation} />
           <View style={styles.body}>
             <FlatList
               data={products}
               renderItem={({item}) => <ProductSet product={item} />}
-              keyExtractor={item => item.id} 
+              keyExtractor={item => item.id}
             />
           </View>
+
           <Footer navigation={navigation} />
         </View>
       </LinearGradient>

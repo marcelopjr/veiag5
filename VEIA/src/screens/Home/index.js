@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Text, View, FlatList, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 

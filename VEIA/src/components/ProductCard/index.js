@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Text, View, Image} from 'react-native';
 
 import {styles} from './styles';
 
 import {ButtonAddCart} from '../Buttons/ButtonAddCart';
 
+import CartContext from '../CartContext/CartContext';
+
 export const ProductCard = ({product}) => {
+  const {addProduct} = useContext(CartContext);
+
   return (
     <>
       <View style={styles.container}>
@@ -26,7 +30,7 @@ export const ProductCard = ({product}) => {
           <Text style={styles.precoProduto}>R$ {product.valor}</Text>
         </View>
 
-        <ButtonAddCart />
+        <ButtonAddCart onPress={() => addProduct(product)} />
       </View>
     </>
   );
