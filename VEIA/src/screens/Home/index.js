@@ -39,7 +39,7 @@ export const Home = ({navigation}) => {
             />
           </View>
 
-          <Footer />
+          <Footer navigation={navigation} />
         </View>
       </LinearGradient>
     </>
