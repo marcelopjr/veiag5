@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, DrawerLayoutAndroidComponent } from 'react-native';
 
 export const InputNewProduct = ({
  placeholder,
