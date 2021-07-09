@@ -19,7 +19,7 @@ export const ProductSet = ({product}) => {
                 <Text style = {styles.nomeProduto}>{product.valor}</Text>
             </View>
             <View style = {styles.btn}>
-                <TouchableOpacity>
+                <TouchableOpacity style={{marginBottom: 20}}>
                     <MaterialCommunityIcons name='square-edit-outline' size={30}/>
                 </TouchableOpacity>
                     

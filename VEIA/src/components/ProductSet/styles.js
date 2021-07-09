@@ -1,3 +1,5 @@
+import LinearGradient from 'react-native-linear-gradient';
+
 const {StyleSheet} = require('react-native');
 
 export const styles = StyleSheet.create({
@@ -8,16 +10,18 @@ export const styles = StyleSheet.create({
         marginBottom: 15,
         borderRadius: 5,
         padding: 10,
-        justifyContent: 'space-between'
+        alignItems: 'center',
         
     },
 
     nomeProduto:{
-        fontSize: 15,
+        fontSize: 16,
+        paddingLeft: 20,
+        width: 190,
+
     },
 
     btn:{
-        justifyContent: 'space-between',
-        paddingVertical: 10,
+        marginLeft: 10,
     }
 });
