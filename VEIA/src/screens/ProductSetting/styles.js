@@ -8,4 +8,19 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 601,
   },
+
+  btnAdd:{
+    position:'absolute', 
+    alignItems:'center',
+    justifyContent: 'center',
+    backgroundColor:'#32CD32',
+    padding: 10,
+    bottom:80,
+    left: 10,
+    borderRadius:30,
+  },
+
+  textAdd:{
+    fontSize:40
+  },
 });
