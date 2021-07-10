@@ -8,7 +8,8 @@ import {styles} from './styles';
 import CartContext from '../CartContext/CartContext';
 
 export const ProductCart = ({product}) => {
-  const {removeProduct} = useContext(CartContext);
+  const {removeProduct, productIncrement, productDecrement} =
+    useContext(CartContext);
 
   return (
     <View style={styles.container}>
@@ -27,7 +28,27 @@ export const ProductCart = ({product}) => {
           <Text style={{fontWeight: '100', fontSize: 12}}>
             {product.nomeCategoria}
           </Text>
-          <Text style={{fontWeight: 'bold'}}>R$ {product.valor}</Text>
+          <View style={styles.valueQuantity}>
+            <Text style={{fontWeight: 'bold'}}>R$ {product.valor}</Text>
+
+            <TouchableOpacity style={{marginLeft: 25}}>
+              <FeatherIcons
+                name="minus"
+                size={20}
+                onPress={() => productDecrement(product)}
+              />
+            </TouchableOpacity>
+
+            <Text>x{product.amount}</Text>
+
+            <TouchableOpacity>
+              <FeatherIcons
+                name="plus"
+                size={20}
+                onPress={() => productIncrement(product)}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
 

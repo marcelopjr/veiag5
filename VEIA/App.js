@@ -6,6 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {Routes} from './src/routes';
 import {CartProvider} from './src/components/CartContext/CartContext';
+import {ProductProvider} from './src/components/ProductContext/ProductContext';
 
 // import { Container } from './styles';
 
@@ -17,9 +18,11 @@ const VEIA = () => {
         translucent
         barStyle="light-content"
       />
-      <CartProvider>
-        <Routes />
-      </CartProvider>
+      <ProductProvider>
+        <CartProvider>
+          <Routes />
+        </CartProvider>
+      </ProductProvider>
     </NavigationContainer>
   );
 };

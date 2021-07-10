@@ -3,24 +3,20 @@ import {Text, View, FlatList, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {styles} from './styles';
-
 import {ProductCard} from '../../components/ProductCard';
-
-import ProductService from '../../services/ProductService';
-
 import {Header} from '../../components/Header';
-
 import {Footer} from '../../components/Footer';
 
-export const Home = ({navigation}) => {
-  const [products, setProducts] = useState([]);
-  const productService = new ProductService();
+import ProductContext from '../../components/ProductContext/ProductContext';
 
+export const Home = ({navigation}) => {
+  const {products, getProductsAtt} = useContext(ProductContext);
+  const [update, isUpdate] = useState(false);
   const numColumns = 2;
 
-  useEffect(() => {
-    productService.getProduto().then(data => setProducts(data));
-  }, []);
+  const onRefresh = () => {
+    getProductsAtt();
+  };
 
   return (
     <>
@@ -36,6 +32,8 @@ export const Home = ({navigation}) => {
               showsVerticalScrollIndicator={false}
               numColumns={numColumns}
               columnWrapperStyle={{justifyContent: 'space-between'}}
+              refreshing={update}
+              onRefresh={() => getProductsAtt()}
             />
           </View>
 

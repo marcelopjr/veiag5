@@ -24,6 +24,10 @@ export const styles = StyleSheet.create({
     paddingVertical: 5,
     justifyContent: 'space-between',
   },
+  valueQuantity: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   btn: {
     justifyContent: 'center',
   },

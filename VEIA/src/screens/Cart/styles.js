@@ -7,10 +7,16 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     flexDirection: 'row',
     justifyContent: 'center',
-    height: 601,
+    height: 559,
   },
   cartAlert: {
     fontSize: 25,
     fontWeight: 'bold',
+  },
+  total: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginTop: 15,
   },
 });
