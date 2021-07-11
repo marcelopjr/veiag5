@@ -1,13 +1,15 @@
-import React, {useContext} from 'react';
+import React, {useContext, useRef} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import FeatherIcons from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {styles} from './styles';
 
+import {UpdateProduct} from '../Modals/UpdateProduct/UpdateProduct';
+
 import ProductContext from '../ProductContext/ProductContext';
 
-export const ProductSet = ({product}) => {
+export const ProductSet = ({product, onOpenModalUpdateProduct, setProduct}) => {
   const {updateProduct, deleteProduct} = useContext(ProductContext);
 
   return (
@@ -25,7 +27,12 @@ export const ProductSet = ({product}) => {
           <Text style={styles.nomeProduto}>{product.valor}</Text>
         </View>
         <View style={styles.btn}>
-          <TouchableOpacity style={{marginBottom: 20}}>
+          <TouchableOpacity
+            onPress={() => {
+              onOpenModalUpdateProduct();
+              setProduct(product);
+            }}
+            style={{marginBottom: 20}}>
             <MaterialCommunityIcons name="square-edit-outline" size={30} />
           </TouchableOpacity>
 

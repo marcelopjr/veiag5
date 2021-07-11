@@ -6,7 +6,8 @@ export default class ProdutoService {
   }
 
   getProdutoById(id) {
-    return api.get('/produto/' + id).then(res => res.data);
+    console.log('servc', id);
+    return api.get(`/produto/${id}`).then(res => res.data);
   }
 
   deleteProdutoId(id) {

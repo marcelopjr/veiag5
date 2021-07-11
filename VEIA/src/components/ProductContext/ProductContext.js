@@ -20,7 +20,7 @@ export function ProductProvider({children}) {
     productService
       .createProduto(data)
       .then(resp => {
-        alert('Produto Cadastrado'), getProductsAtt();
+        getProductsAtt(), alert('Produto Cadastrado');
       })
       .catch(error => alert('Produto nao Cadastrado'));
   }
@@ -32,10 +32,12 @@ export function ProductProvider({children}) {
       .catch(error => alert('Nao e possivel deletar este Produto!'));
   }
 
-  function updateProduct(data) {
+  function updateProduct(data, id) {
     productService
-      .updateProduto(data, data.id)
-      .then(resp => console.log(resp))
+      .updateProduto(data, id)
+      .then(resp => {
+        alert('Produto Atualizado'), getProductsAtt();
+      })
       .catch(error => console.log(error));
   }
 
