@@ -33,7 +33,7 @@ export const ProductSetting = ({navigation}) => {
 
   return (
     <>
-      <LinearGradient style={{flex: 1}} colors={['#00BFFF', '#87CEFA']}>
+      <LinearGradient style={{flex: 1}} colors={['#6A5ACD', '#836FFF']}>
         <View style={styles.container}>
           <Header navigation={navigation} />
 

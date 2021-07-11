@@ -1,22 +1,43 @@
-import React, {useContext, useState} from 'react';
-import {Text, TouchableOpacity, View, Alert} from 'react-native';
+import React, {useContext, useState, useEffect} from 'react';
+import {Text, TouchableOpacity, View} from 'react-native';
+
+import {Picker} from '@react-native-picker/picker';
 
 import {Modalize} from 'react-native-modalize';
 
 import {InputNewProduct} from '../Inputs/InputNewProduct';
 
-import ProductService from '../../services/ProductService';
+import CategoriaService from '../../services/CategoriaService';
+import FuncionarioService from '../../services/FuncionarioService';
 
 import ProductContext from '../ProductContext/ProductContext';
 
 export const NewProduct = ({modalizeRef}) => {
   const {newProduct} = useContext(ProductContext);
+  const [categoria, setCategoria] = useState([]);
+  const categoriaService = new CategoriaService();
+  const [funcionario, setFuncionario] = useState([]);
+  const funcionarioService = new FuncionarioService();
   const [nomeProduto, setnomeProduto] = useState('');
   const [descricao, setDescricao] = useState('');
   const [qtdEstoque, setQtdEstoque] = useState('');
   const [price, setPrice] = useState('');
   const [idCategoria, setidCategoria] = useState('');
   const [idFuncionario, setidFuncionario] = useState('');
+
+  function resetValues() {
+    setnomeProduto('');
+    setDescricao('');
+    setQtdEstoque('');
+    setPrice('');
+    setidCategoria('');
+    setidFuncionario('');
+  }
+
+  useEffect(() => {
+    categoriaService.getCategoria().then(data => setCategoria(data));
+    funcionarioService.getFuncionario().then(data => setFuncionario(data));
+  }, []);
 
   const handleSubmit = () => {
     const data = {
@@ -28,19 +49,22 @@ export const NewProduct = ({modalizeRef}) => {
       idFuncionario: parseInt(idFuncionario),
       dataFabricacao: '2019-10-01T00:00:00Z',
     };
+
     if (
-      data.nome === '' &&
-      data.descricao === '' &&
-      data.qtdEstoque === '' &&
-      data.valor === '' &&
-      data.idCategoria === '' &&
-      data.idFuncionario === ''
+      nomeProduto === '' ||
+      descricao === '' ||
+      qtdEstoque === '' ||
+      price === '' ||
+      idCategoria === '' ||
+      idFuncionario === ''
     ) {
       alert('Preencha os campos!');
     } else {
       newProduct(data);
+      resetValues();
+
+      modalizeRef.current?.close();
     }
-    modalizeRef.current?.close();
   };
 
   return (
@@ -77,20 +101,45 @@ export const NewProduct = ({modalizeRef}) => {
           />
         </View>
         <View style={{marginBottom: 8}}>
-          <InputNewProduct
+          {/* <InputNewProduct
             placeholder={'id Categoria'}
             keyboardType={'numeric'}
             // value={idCategoria.toString()}
             onChange={e => setidCategoria(e.nativeEvent.text)}
-          />
+          /> */}
+          <Picker
+            selectedValue={idCategoria}
+            style={{height: 50, width: '100%'}}
+            onValueChange={(itemValue, itemIndex) => setidCategoria(itemValue)}>
+            <Picker.Item label="SELECIONE UMA CATEGORIA" value="" />
+            {categoria.map(item => {
+              return (
+                <Picker.Item label={item.nome} value={item.id} key={item.id} />
+              );
+            })}
+          </Picker>
         </View>
         <View style={{marginBottom: 8}}>
-          <InputNewProduct
+          {/* <InputNewProduct
             placeholder={'id Funcionario'}
             keyboardType={'numeric'}
             // value={idFuncionario.toString()}
             onChange={e => setidFuncionario(e.nativeEvent.text)}
-          />
+          /> */}
+
+          <Picker
+            selectedValue={idFuncionario}
+            style={{height: 50, width: '100%'}}
+            onValueChange={(itemValue, itemIndex) =>
+              setidFuncionario(itemValue)
+            }>
+            <Picker.Item label="SELECIONE UM FUNCIONARIO" value="" />
+            {funcionario.map(item => {
+              return (
+                <Picker.Item label={item.nome} value={item.id} key={item.id} />
+              );
+            })}
+          </Picker>
         </View>
 
         <TouchableOpacity

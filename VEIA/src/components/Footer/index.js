@@ -15,16 +15,22 @@ export const Footer = ({navigation}) => {
 
   return (
     <View style={styles.menu}>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity
+        style={styles.btnHome}
+        onPress={() => navigation.navigate('Home')}>
         <IoniconsIcons name="home-outline" size={30} color={'#000'} />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-        <Text>{quantidadeTotalAmount}</Text>
+      <TouchableOpacity
+        style={styles.btnCart}
+        onPress={() => navigation.navigate('Cart')}>
+        <Text style={{marginBottom: 33}}>{quantidadeTotalAmount}</Text>
         <IoniconsIcons name="cart-outline" size={30} color={'#000'} />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+      <TouchableOpacity
+        style={styles.btnProfile}
+        onPress={() => navigation.navigate('Profile')}>
         <IoniconsIcons name="person-outline" size={30} color={'#000'} />
       </TouchableOpacity>
     </View>

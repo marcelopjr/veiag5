@@ -8,6 +8,30 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 50,
+    paddingVertical: 10,
+  },
+  btnHome: {
+    height: '100%',
+    width: '33%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btnCart: {
+    height: '100%',
+    width: '33%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
+    borderRightColor: '#808080',
+    borderLeftColor: '#808080',
+  },
+  btnProfile: {
+    height: '100%',
+    width: '33%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
