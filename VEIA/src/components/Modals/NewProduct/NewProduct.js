@@ -5,12 +5,12 @@ import {Picker} from '@react-native-picker/picker';
 
 import {Modalize} from 'react-native-modalize';
 
-import {InputNewProduct} from '../Inputs/InputNewProduct';
+import {InputNewProduct} from '../../Inputs/InputNewProduct';
 
-import CategoriaService from '../../services/CategoriaService';
-import FuncionarioService from '../../services/FuncionarioService';
+import CategoriaService from '../../../services/CategoriaService';
+import FuncionarioService from '../../../services/FuncionarioService';
 
-import ProductContext from '../ProductContext/ProductContext';
+import ProductContext from '../../ProductContext/ProductContext';
 
 import {styles} from './styles';
 import {Formik} from 'formik';

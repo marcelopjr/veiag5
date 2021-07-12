@@ -23,4 +23,16 @@ export const styles = StyleSheet.create({
   textAdd:{
     fontSize:40
   },
+
+  btnSearch:{
+    position:'absolute', 
+    alignItems:'center',
+    justifyContent: 'center',
+    backgroundColor:'#32CD32',
+    padding: 10,
+    bottom: 145,
+    left: 10,
+    borderRadius:30,
+  },
+
 });

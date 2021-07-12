@@ -14,8 +14,9 @@ import ProductService from '../../services/ProductService';
 
 import Feathericons from 'react-native-vector-icons/Feather';
 
-import {NewProduct} from '../../components/Modals/NewProduct';
+import {NewProduct} from '../../components/Modals/NewProduct/NewProduct';
 import {UpdateProduct} from '../../components/Modals/UpdateProduct/UpdateProduct';
+import {FindById} from '../../components/Modals/FindById/FindById'
 
 import ProductContext from '../../components/ProductContext/ProductContext';
 
@@ -23,11 +24,16 @@ export const ProductSetting = ({navigation}) => {
   const {products, getProductsAtt} = useContext(ProductContext);
   const [update, isUpdate] = useState(false);
   const modalizeRef = useRef(null);
+  const modalizeRefFindById = useRef(null);
   const modalizeRefUpdateProduct = useRef(null);
   const [product, setProduct] = useState();
 
   const onOpenModal = () => {
     modalizeRef.current?.open();
+  };
+
+  const onOpenModalFindById = () => {
+    modalizeRefFindById.current?.open();
   };
 
   const onOpenModalUpdateProduct = () => {
@@ -62,14 +68,27 @@ export const ProductSetting = ({navigation}) => {
           </View>
           <Footer navigation={navigation} />
         </View>
+
+        <TouchableOpacity style={styles.btnSearch} onPress={() => onOpenModalFindById()}>
+          <Feathericons name='search' size={35} color={'#FFF'} />
+        </TouchableOpacity>
+        
+        <FindById modalizeRef={modalizeRefFindById} />  
+
         <TouchableOpacity style={styles.btnAdd} onPress={() => onOpenModal()}>
           <Feathericons name="plus-circle" size={35} color={'#FFF'} />
         </TouchableOpacity>
+
         <NewProduct modalizeRef={modalizeRef} />
+
+        
+
         <UpdateProduct
           product={product}
           modalizeRef={modalizeRefUpdateProduct}
         />
+
+        
       </LinearGradient>
     </>
   );
