@@ -9,6 +9,8 @@ import {UpdateProduct} from '../Modals/UpdateProduct/UpdateProduct';
 
 import ProductContext from '../ProductContext/ProductContext';
 
+import {formatNumber} from '../Formatador/Formatador'
+
 export const ProductSet = ({product, onOpenModalUpdateProduct, setProduct}) => {
   const {updateProduct, deleteProduct} = useContext(ProductContext);
 
@@ -46,7 +48,7 @@ export const ProductSet = ({product, onOpenModalUpdateProduct, setProduct}) => {
         <View>
           <Text style={styles.nomeProduto}>{product.nome}</Text>
           <Text style={styles.nomeProduto}>{product.nomeCategoria}</Text>
-          <Text style={styles.nomeProduto}>{product.valor}</Text>
+          <Text style={styles.nomeProduto}>R$ {formatNumber(product.valor)}</Text>
         </View>
         <View style={styles.btn}>
           <TouchableOpacity

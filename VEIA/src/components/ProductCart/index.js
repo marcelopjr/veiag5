@@ -7,6 +7,8 @@ import {styles} from './styles';
 
 import CartContext from '../CartContext/CartContext';
 
+import {formatNumber} from '../Formatador/Formatador'
+
 export const ProductCart = ({product}) => {
   const {removeProduct, productIncrement, productDecrement} =
     useContext(CartContext);
@@ -38,7 +40,7 @@ export const ProductCart = ({product}) => {
             {product.nomeCategoria}
           </Text>
           <View style={styles.valueQuantity}>
-            <Text style={{fontWeight: 'bold'}}>R$ {product.valor}</Text>
+            <Text style={{fontWeight: 'bold'}}>R$ {formatNumber(product.valor)}</Text>
 
             <TouchableOpacity style={{marginLeft: 25}}>
               <FeatherIcons

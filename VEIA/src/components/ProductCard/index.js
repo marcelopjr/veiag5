@@ -7,6 +7,8 @@ import {ButtonAddCart} from '../Buttons/ButtonAddCart';
 
 import CartContext from '../CartContext/CartContext';
 
+import {formatNumber} from '../Formatador/Formatador'
+
 export const ProductCard = ({product}) => {
   const {addProduct} = useContext(CartContext);
   const amount = 1;
@@ -59,7 +61,7 @@ export const ProductCard = ({product}) => {
 
           <Text style={styles.categoriaProduto}>{product.nomeCategoria}</Text>
 
-          <Text style={styles.precoProduto}>R$ {product.valor}</Text>
+          <Text style={styles.precoProduto}>R$ {formatNumber(product.valor)}</Text>
         </View>
 
         <ButtonAddCart onPress={() => addProduct(productCart, amount)} />

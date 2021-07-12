@@ -6,6 +6,8 @@ import {styles} from '../FindById/styles';
 
 import ProductService from '../../../services/ProductService';
 
+import { formatNumber } from '../../Formatador/Formatador';
+
 export const FindById = ({modalizeRef, product}) => {
   const [idProduto, setIdProduto] = useState();
   const [produto, setProduto] = useState();
@@ -86,7 +88,7 @@ export const FindById = ({modalizeRef, product}) => {
 
               <Text style={styles.nomeProduto}>{produto.nome}</Text>
               <Text style={styles.descricao}>{produto.descricao}</Text>
-              <Text style={styles.valor}>R$ {produto.valor}</Text>
+              <Text style={styles.valor}>R$ {formatNumber(produto.valor)}</Text>
             </>
           ) : null}
         </View>

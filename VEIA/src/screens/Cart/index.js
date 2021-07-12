@@ -13,6 +13,8 @@ import CartContext from '../../components/CartContext/CartContext';
 import {ProductCart} from '../../components/ProductCart';
 import {useState} from 'react/cjs/react.development';
 
+import {formatNumber} from '../../components/Formatador/Formatador'
+
 export const Cart = ({navigation}) => {
   const {product, quantidade} = useContext(CartContext);
 
@@ -27,7 +29,7 @@ export const Cart = ({navigation}) => {
           <Header navigation={navigation} />
 
           {quantidade > 0 ? (
-            <Text style={styles.total}>Total: R${total}</Text>
+            <Text style={styles.total}>Total: R$ {formatNumber(total)}</Text>
           ) : (
             <Text style={styles.total}></Text>
           )}
