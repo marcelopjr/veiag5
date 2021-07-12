@@ -15,12 +15,21 @@ export const ProductCart = ({product}) => {
     <View style={styles.container}>
       <View style={styles.infos}>
         <View style={styles.image}>
-          <Image
-            source={{
-              uri: product.fotoLink,
-            }}
-            style={{height: 80, width: 80, marginRight: 10}}
-          />
+          {product.id > 9 ? (
+            <Image
+              source={{
+                uri: 'https://www.malhariapradense.com.br/wp-content/uploads/2017/08/produto-sem-imagem.png',
+              }}
+              style={{height: 80, width: 80, marginRight: 10}}
+            />
+          ) : (
+            <Image
+              source={{
+                uri: product.fotoLink,
+              }}
+              style={{height: 80, width: 80, marginRight: 10}}
+            />
+          )}
         </View>
 
         <View style={styles.escritas}>

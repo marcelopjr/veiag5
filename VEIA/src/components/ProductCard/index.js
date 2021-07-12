@@ -30,7 +30,7 @@ export const ProductCard = ({product}) => {
     <>
       <View style={styles.container}>
         <View style={styles.foto}>
-          {product.fotoLink === null ? (
+          {product.id > 9 ? (
             <Image
               source={{
                 uri: 'https://www.malhariapradense.com.br/wp-content/uploads/2017/08/produto-sem-imagem.png',

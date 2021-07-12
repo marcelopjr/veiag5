@@ -1,8 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react';
-import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
+import {View, Text, TouchableOpacity, Image, Alert} from 'react-native';
 import {Modalize} from 'react-native-modalize';
-import { InputNewProduct } from '../../Inputs/InputNewProduct';
-import { styles } from '../FindById/styles';
+import {InputNewProduct} from '../../Inputs/InputNewProduct';
+import {styles} from '../FindById/styles';
 
 import ProductService from '../../../services/ProductService';
 
@@ -17,71 +17,80 @@ export const FindById = ({modalizeRef, product}) => {
   }
 
   function acharProduto(id) {
-    productService.getProdutoById(id).then(res => setProduto(res)).catch(Error => alert('Produto não encontrado')) 
+    productService
+      .getProdutoById(id)
+      .then(res => setProduto(res))
+      .catch(Error => alert('Produto não encontrado'));
   }
 
   return (
-      <Modalize 
+    <Modalize
       ref={modalizeRef}
-        modalHeight={500}
-        handleStyle={{backgroundColor: '#6A5ACD'}}
-        handlePosition={'inside'}
-        modalStyle={{
-          backgroundColor: '#F0F2F5',
-          borderTopLeftRadius: 16,
-          borderTopRightRadius: 16,
-          padding: 30,
-        }}>
-        <View>
-          <Text style={styles.titleModal}>Procurar produto pelo ID</Text>
+      modalHeight={500}
+      handleStyle={{backgroundColor: '#6A5ACD'}}
+      handlePosition={'inside'}
+      modalStyle={{
+        backgroundColor: '#F0F2F5',
+        borderTopLeftRadius: 16,
+        borderTopRightRadius: 16,
+        padding: 30,
+      }}>
+      <View>
+        <Text style={styles.titleModal}>Procurar produto pelo ID</Text>
 
-          <View>
-            <InputNewProduct
-                  value={idProduto}
-                  //onChangeText={handleChange('idProduto')}
-                  keyboardType={'numeric'}
-                  onChange={e => setIdProduto(e.nativeEvent.text)}
-                  placeholder={'Id'}
-            />
-            <View style={styles.viewBtn}>
-              <TouchableOpacity
-                style={styles.btnProcurar}
-                onPress={() => {
-                  acharProduto(idProduto);
-                  resetValues();
-                }}>
-                <Text>PROCURAR</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.btnCancelar}
-                onPress={() => {
-                  modalizeRef.current?.close();
-                  resetValues();
-                }}>
-                <Text>CANCELAR</Text>
+        <View>
+          <InputNewProduct
+            value={idProduto}
+            //onChangeText={handleChange('idProduto')}
+            keyboardType={'numeric'}
+            onChange={e => setIdProduto(e.nativeEvent.text)}
+            placeholder={'Id'}
+          />
+          <View style={styles.viewBtn}>
+            <TouchableOpacity
+              style={styles.btnProcurar}
+              onPress={() => {
+                acharProduto(idProduto);
+                resetValues();
+              }}>
+              <Text>PROCURAR</Text>
             </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+              style={styles.btnCancelar}
+              onPress={() => {
+                modalizeRef.current?.close();
+                resetValues();
+              }}>
+              <Text>CANCELAR</Text>
+            </TouchableOpacity>
           </View>
-          <View style= {styles.prod}>
-            {produto? 
+        </View>
+        <View style={styles.prod}>
+          {produto ? (
             <>
-              <Image
-                source={{
-                  uri: produto.fotoLink,
-                }}
-                style={styles.image}
-              />
+              {produto.id > 9 ? (
+                <Image
+                  source={{
+                    uri: 'https://www.malhariapradense.com.br/wp-content/uploads/2017/08/produto-sem-imagem.png',
+                  }}
+                  style={{width: 100, height: 100}}
+                />
+              ) : (
+                <Image
+                  source={{
+                    uri: produto.fotoLink,
+                  }}
+                  style={{width: 100, height: 100}}
+                />
+              )}
+
               <Text style={styles.nomeProduto}>{produto.nome}</Text>
               <Text style={styles.descricao}>{produto.descricao}</Text>
               <Text style={styles.valor}>R$ {produto.valor}</Text>
-            </>:
-            null}
-          </View>
-          
-
+            </>
+          ) : null}
         </View>
-          
-      </Modalize>
-    );
+      </View>
+    </Modalize>
+  );
 };
-

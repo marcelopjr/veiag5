@@ -27,7 +27,7 @@ export const Cart = ({navigation}) => {
           <Header navigation={navigation} />
 
           {quantidade > 0 ? (
-            <Text style={styles.total}>Total: {total}</Text>
+            <Text style={styles.total}>Total: R${total}</Text>
           ) : (
             <Text style={styles.total}></Text>
           )}
